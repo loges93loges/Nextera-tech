@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing Table</title>
+  <style>
+
+    
+    body {
+      font-family: Arial, sans-serif;
+      background: #171717;
+      margin: 0;
+      padding: 40px;
+    }
+
+    .pricing-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .card {
+      background: #1c1c1c;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
+    }
+
+    .card h2 {
+      font-size: 22px; 
+      font-weight: 900px;
+      font-weight: bolder;
+      margin-bottom: 10px;
+      color: #0077ff;
+      text-transform: uppercase;
+    }
+
+    .tenure {
+      font-size: 13px;
+      color: #ff0000;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .price-box {
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  overflow: hidden;
+      border-radius: 5px;
+      padding: 12px;
+      margin-bottom: 20px;
+      background-color: #282828;
+    }
+    .price-box::after{
+      content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 30%;
+  z-index: -1;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  backdrop-filter: blur(0px); /* Glass blur effect */
+  -webkit-backdrop-filter: blur(0px);
+  transform: skewX(-35deg);
+  animation: shine 6s infinite;
+  pointer-events: none;
+    }
+    @keyframes shine {
+  0% {
+    left: -150%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+    .price-box p {
+      margin: 5px 0;
+      font-size: 15px;
+    }
+
+    .price-box .main-price {
+      font-size: 18px;
+      font-weight: bold;
+      color: #00eaff;
+    }
+
+    .price-box .old-price {
+      text-decoration: line-through;
+      font-weight: bold;
+      font-size: 18px;
+      letter-spacing: 0.7px;
+      color: #ffffff;
+      margin-right: 5px;
+    }
+
+    .price-box .save {
+      position: relative;
+      margin-left: 20px;
+letter-spacing: 0.6px;
+      animation: blurr 1s ease-in infinite;
+      color: rgb(255, 64, 64);
+      font-weight: bold;
+    }
+@keyframes blurr{
+0%{
+  font-weight: 100;
+}
+100%{
+ 
+  font-weight: 800;
+}
+}
+    .buy-btn {
+      background: #00eaff;
+      color: #fff;
+      padding: 12px;
+      width: 100%;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-bottom: 20px;
+    }
+
+    .buy-btn:hover {
+      background: #03a0ae;
+    }
+
+    ul {
+      text-align: left;
+      padding: 0;
+      color: rgb(255, 255, 255);
+      margin: 0;
+      list-style: none;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    ul li {
+      margin: 5px 0;
+    }
+
+    ul li span {
+      margin-right: 8px;
+      font-weight: bold;
+    }
+
+    .tick {
+      color: rgb(0, 191, 0);
+    }
+
+    .cross {
+      color: red;
+    }
+
+    .more {
+      color: #0077ff;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+
+    .card h1 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #0077ff;
+    }
+
+    .card p {
+      line-height: 1.6;
+      font-size: 1rem;
+      color: #d2d2d2;
+    }
+
+    /* Why Choose Us */
+    .why-choose {
+      background: #fff;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      margin-bottom: 50px;
+    }
+
+    .why-choose p {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #444;
+    }
+
+    .why-points {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .why-points div {
+      background: #f4f8ff;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .why-points div:hover {
+      background: #0077ff;
+      color: #fff;
+      transform: translateY(-5px);
+    }
+
+    .why-points span {
+      font-size: 1.4rem;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    /* Services */
+    .services {
+      margin-top: 60px;
+    }
+
+    .services h1 {
+      margin-bottom: 40px;
+      color: #0077ff;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .service-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .service-card h2 {
+      font-size: 1.2rem;
+      margin: 10px 0;
+      color: #00eaff;
+    }
+
+    .service-card p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    /* Promise Section */
+    .promise {
+      margin-top: 60px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    .promise h1 {
+      margin-bottom: 20px;
+      color: #0077ff;
+    }
+
+    .promise ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+
+    .promise ul li {
+      background: #f4f8ff;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: 0.3s;
+    }
+
+    .promise ul li:hover {
+      background: #0077ff;
+      color: #fff;
+      transform: scale(1.03);
+    }
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #0077ff;
+    }
+
+    p {
+      line-height: 1.6;
+      font-size: 1.5rem;
+      color: #555;
+    }
+
+    /* Why Choose Us */
+    .why-choose {
+      background: #1c1c1c;
+      border-radius: 16px;
+      color: white;
+      padding: 30px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      margin-bottom: 50px;
+    }
+
+    .why-choose p {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #ffffff;
+    }
+
+    .why-points {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .why-points div {
+      background: #282828;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .why-points div:hover {
+      background: #0077ff;
+      color: #fff;
+      transform: translateY(-5px);
+    }
+
+    .why-points span {
+      font-size: 1.4rem;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    /* Services */
+    .services {
+      margin-top: 60px;
+    }
+
+    .services h1 {
+      margin-bottom: 40px;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .service-card {
+      background: #282828;
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .service-card h2 {
+      font-size: 1.2rem;
+      margin: 10px 0;
+    }
+
+    .service-card p {
+      font-size: 0.95rem;
+      color: #989898;
+    }
+
+    /* Promise Section */
+    .promise {
+      margin-top: 60px;
+      background: #1c1c1c;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    .promise h1 {
+      margin-bottom: 20px;
+      color: #0077ff;
+    }
+
+    .promise ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+
+    .promise ul li {
+      color: rgb(255, 255, 255);
+      background: #282828;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: 0.3s;
+    }
+
+    .promise ul li:hover {
+      background: #0077ff;
+      color: #fff;
+      transform: scale(1.03);
+    }
+    /* Responsive Styles */
+@media (max-width: 1024px) {
+  section {
+    padding: 40px 15px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+  }
+
+  .service-card h2 {
+    font-size: 1.1rem;
+  }
+
+  .service-card p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .why-points,
+  .service-grid,
+  .promise ul {
+    grid-template-columns: 1fr; /* Single column */
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  .why-choose,
+  .service-card,
+  .promise {
+    padding: 20px;
+  }
+
+  .why-points div,
+  .promise ul li {
+    padding: 15px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+    text-align: left; /* Better for small screens */
+  }
+
+  .why-choose {
+    padding: 15px;
+  }
+
+  .service-card h2 {
+    font-size: 1rem;
+  }
+
+  .promise ul li {
+    font-size: 0.9rem;
+    padding: 12px;
+  }
+}
+.pricing-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.pricing-header h1 {
+  font-size: 2em;
+  font-weight: 700;
+  color: #0077ff;
+  margin-bottom: 10px;
+}
+
+.pricing-header p {
+  font-size: 1.3rem;
+  color: #555;
+  text-align: center;   /* centers paragraph text */
+  max-width: 600px;     /* optional: keeps text in one nice block */
+  margin: 0 auto;       /* centers block itself */
+}
+.conte{
+  text-align: center;
+  font-size: 1.4rem;
+  color: #b1b1b1;
+  margin-top: 30px;
+}
+h2 {
+  text-align: center;
+
+      margin-bottom: 20px;
+      font-size: 2rem;
+      color: cyan;
+    }
+
+    /* Marquee container */
+    .tools-container {
+  width: 100%;       /* take full width on mobile */
+  max-width: 800px;  /* limit width on larger screens */
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  background: #1c1c1c;
+  border-radius: 10px;
+  padding: 20px 0;
+  box-shadow: 0 0 15px rgba(0,255,255,0.3);
+}
+
+.tools-slider {
+  display: flex;
+  gap: 100px;
+  width: max-content;              /* 👈 allow slider to expand as per content */
+  animation: scroll 20s linear infinite;
+}
+
+.tool {
+  width: 50px;   /* slightly smaller for mobile */
+  height: 50px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.tool:hover {
+  transform: scale(1.3);
+}
+
+/* Keyframes for continuous scroll */
+/* Animation */
+@keyframes scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }  /* shift by half (since duplicated) */
+}
+
+/* Mobile tweaks */
+@media (max-width: 600px) {
+  .tools-slider {
+    gap: 50px;
+    animation: scroll 15s linear infinite;  /* faster on mobile */
+  }
+  .tool {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+
+
+.tools-slider img {
+  height: 60px;
+  transition: transform 0.3s;
+}
+
+.tools-slider img:hover {
+  transform: scale(1.2);
+}
+    .tools-container:hover .tools-slider {
+      animation-play-state: paused; /* pause on hover */
+    }
+
+    @keyframes slide {
+      from { transform: translateX(100%); }
+      to { transform: translateX(-100%); }
+    }
+
+    /* Details panel */
+    .details-panel {
+      background: #1c1c1c;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: left;
+      max-width: 500px;
+      margin: 0 auto;          /* Center horizontally */
+margin-top: 70px;
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+    /* Modal Styles */
+
+
+    .close-btn {
+      float: right;
+      font-size: 20px;
+      cursor: pointer;
+      color: #ff6666;
+    }
+
+ 
+    .details-panel h3 {
+      color: #0077ff;
+      margin-bottom: 10px;
+    }
+    .details-panel p{
+      color: white;
+      font-size: 1.2rem;
+    }
+    strong{
+      color: cyan;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    
+    .instruction {
+  font-size: 1rem;
+  color: #aaa;
+  text-align: center;
+
+  margin-bottom: 15px;
+  font-style: italic;
+}
+.badge {
+        position: absolute;
+        top: 210px;
+        right: 1135px;
+        background: gold;
+        color: black;
+        font-weight: bold;
+        padding: 5px 12px;
+        border-radius: 8px;
+        font-size: 0.9rem;
+      }
+  </style>
+</head>
+<body>
+  <div class="pattern">
+  </div>
+  <div class="pricing-header">
+    <h1>Flexible Plans, Maximum Value</h1><br>
+    <p>Pick the right plan for your business and start growing today</p><br>
+  </div>
+  <div class="pricing-container">
+  <!-- Title Block -->
+
+    <!-- Starter -->
+    <div class="card" style="background-color: #1c1c1c; border: 2px solid cyan">
+      <span class="badge">Most Popular</span>
+
+      <h2>Starter</h2>
+      <p class="tenure">Select the Tenure</p>
+      <div class="price-box">
+        <p class="main-price">Front-end @ 2999 ▼</p>
+        <p><span class="old-price">₹5999</span> <span class="save">SAVE 50%</span></p>
+      </div>
+      <button class="buy-btn" onclick="sendWhatsApp('STARTER - Frontend @ 2999')">Send Now</button>
+      <ul>
+        <li><span class="tick">✔</span> Single Domain</li>
+        <li><span class="tick">✔</span> Free Hosting</li>
+        <li><span class="tick">✔</span> 1 Email Account</li>
+        <li><span class="tick">✔</span> 24/7 Support</li>
+        <li><span class="tick">✔</span> AMC (Annual Maintenance Contract)</li>
+        <li><span class="cross">✘</span> SEO Optimisation</li>
+        <li><span class="cross">✘</span> Free Upgrade to Positive SSL</li>
+        <li><span class="cross">✘</span> Free Dedicated IP</li>
+      </ul>
+    </div>
+
+    <!-- Hatchling -->
+    <div class="card" id="diff" style="background-color: #1c1c1c;">
+      <h2>Hatchling</h2>
+      <p class="tenure">Select the Tenure</p>
+      <div class="price-box">
+        <p class="main-price">Frontend & Backend @ ₹5999 ▼</p>
+        <p><span class="old-price">₹11999</span> <span class="save">SAVE 50%</span></p>
+      </div>
+      <button class="buy-btn" onclick="sendWhatsApp('HATCHLING - Frontend & Backend @ 5999')">Send Now</button>
+      <ul>
+        <li><span class="tick">✔</span> 2 Domain</li>
+        <li><span class="tick">✔</span> Free Hosting</li>
+        <li><span class="tick">✔</span> 2 Email Account(s)</li>
+        <li><span class="tick">✔</span> 24/7 Support</li>
+        <li><span class="tick">✔</span> AMC (Annual Maintenance Contract)</li>
+        <li><span class="tick">✔</span> SEO Optimisation</li>
+        <li><span class="cross">✘</span> Free Upgrade to Positive SSL</li>
+        <li><span class="cross">✘</span> Free Dedicated IP</li>
+      </ul>
+    </div>
+  
+  
+    <!-- Details Panel -->
+    <!-- Baby -->
+    <div class="card" style="background-color: #1c1c1c;" >
+      <h2>Baby</h2>
+      <p class="tenure">Select the Tenure</p>
+      <div class="price-box">
+        <p class="main-price">Frontend & Backend @ ₹7999 ▼</p>
+        <p><span class="old-price">₹15999</span> <span class="save">SAVE 50%</span></p>
+      </div>
+      <button class="buy-btn" onclick="sendWhatsApp('BABY - Frontend & Backend @ 7999')">Send Now</button>
+      <ul>
+        <li><span class="tick">✔</span> 3+ Domains</li>
+        <li><span class="tick">✔</span> Free Hosting</li>
+        <li><span class="tick">✔</span> 2 Email Account(s)</li>
+        <li><span class="tick">✔</span> 24/7 Support</li>
+        <li><span class="tick">✔</span> AMC (Annual Maintenance Contract)</li>
+        <li><span class="tick">✔</span> SEO Optimisation</li>
+        <li><span class="tick">✔</span> Free Upgrade to Positive SSL</li>
+        <li><span class="tick">✔</span> Free Dedicated IP</li>
+      </ul>
+    </div>
+ </div>
+    <!-- Business -->
+
+<P class="conte">“The WordPress website contains the same pricing cards, with the only change being an additional ₹1000 added to each plan.”</P>
+<br><br>
+<h1>Tools We Use</h1>
+<p class="instruction">💡 Click on any tool to know more about it.</p><br>
+<!-- Marquee Section -->
+<div class="tools-container">
+  <div class="tools-slider">
+    <!-- First set -->
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="tool" onclick="showDetails('html')">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" class="tool" onclick="showDetails('css')">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" class="tool" onclick="showDetails('bootstrap')">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="tool" onclick="showDetails('js')">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="tool" onclick="showDetails('react')">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" class="tool" onclick="showDetails('vue')">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" class="tool" onclick="showDetails('next')">
+    <img src="https://th.bing.com/th/id/R.d42672d4d185739d26257ed5c653c740?rik=dvh0VB%2fEWz20hQ&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fnodejs-logo-png-nice-images-collection-node-js-desktop-wallpapers-370.png&ehk=bMmyN3n62enzXql6L4A5EzHc90tJxK%2bKcr6GMACTfRk%3d&risl=&pid=ImgRaw&r=0" class="tool" onclick="showDetails('node')">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="tool" onclick="showDetails('python')">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" class="tool" onclick="showDetails('mongodb')">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" class="tool" onclick="showDetails('postgres')">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" class="tool" onclick="showDetails('firebase')">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" class="tool" style="background-color: white;" onclick="showDetails('github')">
+
+    <!-- Duplicate set for seamless loop -->
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="tool" onclick="showDetails('html')">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" class="tool" onclick="showDetails('css')">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" class="tool" onclick="showDetails('bootstrap')">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="tool" onclick="showDetails('js')">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="tool" onclick="showDetails('react')">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" class="tool" onclick="showDetails('vue')">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" class="tool" onclick="showDetails('next')">
+    <img src="https://th.bing.com/th/id/R.d42672d4d185739d26257ed5c653c740?rik=dvh0VB%2fEWz20hQ&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fnodejs-logo-png-nice-images-collection-node-js-desktop-wallpapers-370.png&ehk=bMmyN3n62enzXql6L4A5EzHc90tJxK%2bKcr6GMACTfRk%3d&risl=&pid=ImgRaw&r=0" class="tool" onclick="showDetails('node')">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="tool" onclick="showDetails('python')">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" class="tool" onclick="showDetails('mongodb')">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" class="tool" onclick="showDetails('postgres')">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" class="tool" onclick="showDetails('firebase')">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" class="tool" style="background-color: white;" onclick="showDetails('github')">
+  </div>
+</div>
+
+
+<div id="detailsPanel" class="details-panel"></div>
+<br><br>
+  <section>
+    <!-- Why Choose Us -->
+    <div class="why-choose">
+      <h1>✨ Why Choose Us? ✨</h1>
+      <p>We don’t just build websites—we create digital experiences that truly connect your brand with your customers. 
+        Every project we deliver is carefully tailored to your business goals, ensuring your online presence is professional, 
+        engaging, and results-driven. With our creative designs, user-focused approach, and cutting-edge development, 
+        we build websites that are not only visually appealing but also fast, secure, and optimized for growth. 
+        From strategy to launch, we prioritize clear communication, on-time delivery, and long-term support, 
+        giving you more than just a website—we give you a powerful digital tool that helps your business thrive.</p>
+
+      <div class="why-points">
+        <div><span>🚀</span> Client-Focused</div>
+        <div><span>🎨</span> Creative & Modern Designs</div>
+        <div><span>⚡</span> Fast & Responsive</div>
+        <div><span>🔒</span> Secure & Reliable</div>
+        <div><span>🔍</span> SEO-Ready</div>
+        <div><span>⏱️</span> On-Time Delivery</div>
+        <div><span>🤝</span> Long-Term Support</div>
+      </div>
+    </div>
+
+    <!-- What We Offer -->
+    <div class="services">
+      <h1>💻 What We Offer</h1>
+      <div class="service-grid">
+
+        <div class="service-card">
+          <h2>🖌️ Custom Website Design</h2>
+          <p>Unique, modern, and user-friendly websites that reflect your brand’s identity and engage customers.</p>
+        </div>
+
+        <div class="service-card">
+          <h2>📱 Responsive Development</h2>
+          <p>Websites that adapt perfectly to desktops, tablets, and mobiles. Optimized for speed and usability.</p>
+        </div>
+
+        <div class="service-card">
+          <h2>🛒 E-Commerce Solutions</h2>
+          <p>Secure, scalable, and feature-rich online stores with easy product management and smooth checkout.</p>
+        </div>
+
+        <div class="service-card">
+          <h2>⚙️ CMS Integration</h2>
+          <p>Manage your content effortlessly with WordPress, Shopify, or custom CMS solutions.</p>
+        </div>
+
+        <div class="service-card">
+          <h2>🌍 Web App Development</h2>
+          <p>Dynamic, secure, and scalable web applications tailored to your business needs.</p>
+        </div>
+
+        <div class="service-card">
+          <h2>🔍 SEO-Friendly Websites</h2>
+          <p>Optimized with clean code, fast load times, and best practices to rank higher on Google.</p>
+        </div>
+
+        <div class="service-card">
+          <h2>🔧 Ongoing Support</h2>
+          <p>Continuous updates, security patches, and improvements to keep your site secure and fresh.</p>
+        </div>
+
+        <div class="service-card">
+          <h2>⚡ UI/UX Design</h2>
+          <p>Intuitive and engaging interfaces for a smooth and enjoyable user experience.</p>
+        </div>
+
+        <div class="service-card">
+          <h2>☁️ Hosting & Deployment</h2>
+          <p>Secure, fast, and reliable hosting with hassle-free deployment support.</p>
+        </div>
+
+        <div class="service-card">
+          <h2>🔐 Website Security</h2>
+          <p>SSL, firewalls, malware protection, and backups to safeguard your business online.</p>
+        </div>
+
+        <div class="service-card">
+          <h2>📊 Website Analytics</h2>
+          <p>Track user behavior, traffic sources, and growth with integrated analytics tools.</p>
+        </div>
+
+        <div class="service-card">
+          <h2>🛠️ Website Redesign & Revamp</h2>
+          <p>Transform old sites with modern designs, better speed, and improved functionality.</p>
+        </div>
+
+        <div class="service-card">
+          <h2>⚙️ API Integration</h2>
+          <p>Seamless integration with payment gateways, CRMs, chatbots, and third-party tools.</p>
+        </div>
+
+        <div class="service-card">
+          <h2>🎨 Graphic & Brand Design</h2>
+          <p>Logos, banners, and creative visuals that strengthen your brand identity.</p>
+        </div>
+
+        <div class="service-card">
+          <h2>🌎 Multi-Language Websites</h2>
+          <p>Expand globally with websites that support multiple languages and regions.</p>
+        </div>
+
+        <div class="service-card">
+          <h2>📈 Performance Optimization</h2>
+          <p>Boost speed and efficiency with optimized code, caching, and lightweight designs.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Our Promise -->
+    <div class="promise">
+      <h1>🚀 Our Promise to Clients</h1>
+      <ul>
+        <li>✔️ Creative & modern designs</li>
+        <li>✔️ Fast loading & secure websites</li>
+        <li>✔️ Client-focused approach</li>
+        <li>✔️ Affordable pricing packages</li>
+        <li>✔️ On-time delivery</li>
+        <li>✔️ 100% responsive & mobile-friendly</li>
+        <li>✔️ SEO-ready for better visibility</li>
+        <li>✔️ Transparent communication</li>
+        <li>✔️ Scalable solutions</li>
+        <li>✔️ Ongoing support & maintenance</li>
+        <li>✔️ Data privacy & security assurance</li>
+        <li>✔️ Easy-to-manage websites</li>
+        <li>✔️ Latest tools & technologies</li>
+        <li>✔️ Personalized business solutions</li>
+      </ul>
+    </div>
+  </section>
+</body>
+<script>
+
+const toolDetails = {
+      html: { title: "HTML5", what: "The standard markup language for structuring web content.", why: "Foundation of every website we build.", example: "Portfolio sites, business landing pages." },
+      css: { title: "CSS3", what: "Stylesheet language for designing web pages.", why: "To create modern, responsive, and visually appealing designs.", example: "Responsive layouts, animations." },
+      next: { title: "Next.js", what: "Standard markup language for structuring web pages.", why: "Forms the backbone of all websites, providing structure and content.", example: "Responsive landing page layouts." },
+      bootstrap: { title: "Bootstrap", what: "CSS framework for responsive, mobile-first websites.", why: "Fast development and consistent UI.", example: "Pricing tables, responsive landing pages." },
+      js: { title: "JavaScript", what: "Programming language of the web.", why: "To add interactivity and dynamic content.", example: "Dashboards, interactive forms." },
+      react: { title: "React", what: "JavaScript library for building UIs.", why: "Helps build scalable, fast, and interactive apps.", example: "Single Page Applications, admin dashboards." },
+      vue: { title: "Vue.js", what: "Progressive JavaScript framework.", why: "Lightweight and flexible for small to medium apps.", example: "Widgets, mini web apps." },
+      node: { title: "Node.js", what: "JavaScript runtime for server-side applications.", why: "Fast, scalable backend development.", example: "APIs, real-time chat applications." },
+      python: { title: "Python", what: "High-level programming language.", why: "Used for backend, AI/ML, and data projects.", example: "AI chatbots, data processing apps." },
+      mongodb: { title: "MongoDB", what: "NoSQL database storing JSON-like documents.", why: "Flexible and scalable database option.", example: "User data storage, product catalogs." },
+      postgres: { title: "PostgreSQL", what: "Advanced open-source relational database.", why: "Best for structured data and transactions.", example: "E-commerce platforms, banking apps." },
+      firebase: { title: "Firebase", what: "Google’s backend-as-a-service platform.", why: "Great for authentication, real-time databases.", example: "Mobile apps, chat systems." },
+      github: { title: "GitHub", what: "Code hosting and collaboration platform.", why: "Version control and teamwork.", example: "All projects for source code management." }
+    };
+
+    function showDetails(tool) {
+      const panel = document.getElementById("detailsPanel");
+      const details = toolDetails[tool];
+      panel.innerHTML = `
+        <h3>${details.title}</h3>
+        <p><strong>What it is:</strong> ${details.what}</p>
+        <p><strong>Why we use it:</strong> ${details.why}</p>
+        <p><strong>Example project:</strong> ${details.example}</p>
+      `;
+      panel.style.display = "block";
+    }
+
+
+  function sendWhatsApp(plan) {
+    let confirmSend = confirm(`Do you want to send this plan to Admin?\n\n${plan}`);
+    if (confirmSend) {
+      let adminNumber = "916369327027"; 
+      let message = 
+  `Hello Admin, 
+I am interested in the following plan:
+  \n${plan}`;
+      let url = `https://wa.me/${adminNumber}?text=${encodeURIComponent(message)}`;
+      window.open(url, "_blank");
+    }
+  }
+</script>
+</html>

@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A–Z Digital Marketing</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #171717;
+      text-align: center;
+    }
+
+    header {
+      padding: 40px 20px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #0077ff;
+      text-transform: uppercase;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      background: #282828;
+      border-radius: 12px;
+      padding: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px rgba(0,255,255,0.4);
+    }
+
+    .card h3 {
+      color: #00eaff;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #ccc;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      background: rgba(0,0,0,0.6);
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+    h2 {
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+        color:#0077ff;
+      }
+  
+      p.subtitle {
+        color: #bbb;
+        margin-bottom: 40px;
+        font-size: 1.1rem;
+      }
+  
+      .pricing-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 55px;
+        max-width: 1200px;
+        margin: auto;
+      }
+  
+      .pricing-card {
+        background: #1c1c1c;
+        padding: 30px 10px;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+        transition: transform 0.3s, box-shadow 0.3s;
+        position: relative;
+      }
+  
+      .pricing-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
+      }
+  
+      .plan-title {
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+        color: #00eaff;
+      }
+  
+      .price {
+        font-size: 2rem;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 20px;
+      }
+  
+      .price span {
+        font-size: 1rem;
+        color: #aaa;
+      }
+  
+      ul.features {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0;
+        text-align: left;
+      }
+  
+      ul.features li {
+        margin: 10px 0;
+        font-size: 14px;
+        padding-left: 10px;
+        color: #ddd;
+      }
+  
+      ul.features li::before {
+        content: "✔️ ";
+        color: lime;
+      }
+  
+      .cta-btn {
+        background: #00eaff;
+        color: black;
+        padding: 12px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        display: inline-block;
+        margin-top: 15px;
+        transition: background 0.3s;
+      }
+  
+      .cta-btn:hover {
+        background: #00e6e6;
+      }
+  
+      /* Highlight Premium */
+      .premium {
+        border: 2px solid cyan;
+      }
+  
+      .badge {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background: gold;
+        color: black;
+        font-weight: bold;
+        padding: 5px 12px;
+        border-radius: 8px;
+        font-size: 0.9rem;
+      }
+         .types h1 {
+      font-size: 2.2rem;
+      margin-bottom: 30px;
+      color: #0077ff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .feat {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .feat li {
+      background: #1c1c1c;
+      color: rgb(255, 255, 255);
+      padding: 12px 25px;
+      border-radius: 3px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .feat li:hover {
+      background: #0056b3;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+    .marque-container {
+  width: 50%;
+  margin: 0 auto; /* gap between items */
+border-radius: 50px;
+  overflow: hidden;
+  padding: 10px;
+  background: #111; /* optional dark bg */
+}
+
+.marque {
+  display: inline-block;
+  white-space: nowrap;
+  animation: moving 25s linear infinite;
+}
+
+.marque span {
+  margin: 0 30px; /* gap between items */
+  font-weight: bold;
+  color: cyan;
+  position: relative;
+}
+
+.marque span:not(:last-child)::after {
+  content: " ♦ ";
+  margin-left: 60px;
+  color: cyan;
+}
+
+@keyframes moving {
+  from {
+    transform: translateX(45%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+.digital-marketing {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  padding: 60px 20px;
+  color: #cccccc;
+  text-align: left;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dm-container {
+  background-color: #1c1c1c;
+  border-radius: 12px;
+  padding: 25px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dm-container:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.dm-container h2 {
+  font-size: 1.8rem;
+  color: #0073e6;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.dm-container p {
+  font-size: 1rem;
+  color: #878787;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.dm-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.dm-container li {
+  font-size: 1.05rem;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.tick {
+  color: #00eaff;
+  font-size: 1.3rem;
+  margin-right: 10px;
+  animation: bounce 1.5s infinite ease-in-out;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .digital-marketing {
+    grid-template-columns: 1fr;   /* stack boxes */
+    padding: 30px 15px;
+    gap: 20px;
+  }
+  @keyframes moving {
+  from {
+    transform: translateX(7%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+  .dm-container {
+    padding: 20px;
+  }
+
+  .dm-container h2 {
+    font-size: 1.4rem;
+  }
+
+  .dm-container p {
+    font-size: 0.95rem;
+  }
+
+  .dm-container li {
+    font-size: 0.95rem;
+  }
+
+  .tick {
+    font-size: 1.1rem;
+  }
+}
+
+/* Extra small screens (like 400px width phones) */
+@media (max-width: 480px) {
+  .dm-container {
+    padding: 15px;
+  }
+
+  .dm-container h2 {
+    font-size: 1.2rem;
+  }
+
+  .dm-container p {
+    font-size: 0.9rem;
+  }
+
+  .dm-container li {
+    font-size: 0.9rem;
+  }
+}
+.service-section {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin: 50px auto;
+    max-width: 1200px; /* keep content centered */
+    padding: 20px 80px; /* more space left & right */
+  }
+
+  .service-section:nth-child(even) {
+    flex-direction: row-reverse; /* alternate layout */
+  }
+
+  .service-section img {
+    width: 480px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  }
+
+  .service-text {
+    flex: 1;
+  }
+
+  .service-text h2 {
+    font-size: 2rem;
+    color: #0077ff;
+    margin-bottom: 15px;
+  }
+
+  .service-text p {
+    font-size: 1.3rem;
+    color: #878787;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  /* Responsive for mobile */
+  @media (max-width: 768px) {
+    .service-section {
+      flex-direction: column !important;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .service-section img {
+      width: 90%;
+      max-width: 320px;
+      margin-bottom: 20px;
+    }
+
+    .service-text h2 {
+      font-size: 1.6rem;
+    }
+
+    .service-text p {
+      font-size: 1rem;
+    }
+  }
+
+  .process-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 60px 8%;
+      gap: 50px;
+    }
+
+    .process-left {
+      width: 65%;
+    }
+
+    .process-left h2 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #0077ff;
+      margin-bottom: 40px;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px 30px;
+    }
+
+    .process-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .process-step.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .circle {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #00eaff, cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 18px;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    .process-text h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0 0 8px;
+      color: #00eaff;
+    }
+
+    .process-text p {
+      margin: 0;
+      font-size: 18px;
+      color: #a1a1a1;
+      line-height: 1.6;
+    }
+
+    /* Right side */
+    .process-right {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .circle-logo {
+      border: 6px solid transparent;
+      border-radius: 50%;
+      padding: 40px;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: opacity 1s ease, transform 1s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .circle-logo.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Glow border effect */
+    .circle-logo::before {
+      content: "";
+      position: absolute;
+      top: -6px;
+      left: -6px;
+      right: -6px;
+      bottom: -6px;
+      border-radius: 50%;
+      border: 6px solid;
+      border-image: linear-gradient(45deg, #00eaff, #00eaff, #1de9b6, #00bfa5) 1;
+      filter: drop-shadow(0 0 10px #00eaff);
+      z-index: -1;
+    }
+
+    .circle-logo img {
+      width: 380px;
+      max-width: 100%;
+      transition: transform 1s ease;
+    }
+
+    /* Hover effect: rotate clockwise, then anti-clockwise */
+    .circle-logo:hover img {
+      transform: rotate(180deg);
+    }
+
+    .circle-logo img.rotated-back {
+      transform: rotate();
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .process-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .process-left {
+        width: 100%;
+      }
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+      .process-right {
+        margin-top: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+ 
+  
+    <h2>Our Digital Marketing Plans</h2>
+    <p class="subtitle">Choose the best package to grow your business 🚀</p>
+  
+    <div class="pricing-container">
+      <!-- Basic -->
+      <div class="pricing-card">
+        <h3 class="plan-title">Basic</h3>
+        <p class="price">$2999 <span>/month</span></p>
+        <ul class="features">
+          <li>SEO Setup & Optimization</li>
+          <li>8 Social Media Posts / month</li>
+          <li>2 Reels / month</li>
+          <li>1 Promo Video Production</li>
+          <li>Content Marketing (2 blogs)</li>
+          <li>Social Marketing (FB + Instagram)</li>
+          <li>Email Marketing (Basic)</li>
+          <li>Market Research (Basic Report)</li>
+          <li>24/7 Chat Support</li>
+
+        </ul>
+        <a class="cta-btn" onclick="sendWhatsApp('Basic - DM @ 2999')" style="cursor: pointer;">Send Now</a>
+      </div>
+  
+      <!-- Standard -->
+      <div class="pricing-card premium">
+        <span class="badge">Most Popular</span>
+        <h3 class="plan-title">Standard</h3>
+        <p class="price">$4999 <span>/month</span></p>
+        <ul class="features">
+          <li>Advanced SEO Optimization</li>
+          <li>12 Social Media Posts / month</li>
+          <li>4 Reels / month</li>
+          <li>Video Production (2-3 Videos)</li>
+          <li>Content Marketing (4 blogs)</li>
+          <li>Social Marketing (FB, Insta, LinkedIn, Utube)</li>
+          <li>Offline marketing</li>
+          <li>Email Marketing Campaigns</li>
+          <li>24/7 Chat Support</li>
+        </ul>
+        <a class="cta-btn"  onclick="sendWhatsApp('Standard - DM @ 2999')" style="cursor: pointer;">Send Now</a>
+      </div>
+  
+      <!-- Premium -->
+      <div class="pricing-card">
+        <h3 class="plan-title">Premium</h3>
+        <p class="price">$6999 <span>/month</span></p>
+        <ul class="features">
+          <li>Advanced SEO Optimization</li>
+          <li>20 Social Media Posts / month</li>
+          <li>8 Reels / month</li>
+          <li>Video Production (5+ Videos)</li>
+          <li>Advanced Email Automation</li>
+          <li>Public Relations & Media Coverage</li>
+          <li>Offline marketing</li>
+          <li>Social Marketing (All Platforms)</li>
+          <li>24/7 Chat Support</li>
+
+        </ul>
+        <a class="cta-btn" onclick="sendWhatsApp('Premium - DM @ 2999')" style="cursor: pointer;">Send Now</a>
+      </div><br><br>
+ 
+    </div>
+    <div class="types">
+      <h1>Offline Marketing</h1><br>
+      <ul class="feat">
+        <li>Banners</li>
+        <li>Flyers</li>
+        <li>Pamphlets</li>
+        <li>Newspaper & Magazine Ads</li>
+        <li>Business Cards</li>
+        <li>Brochures / Catalogues</li>
+        <li>Posters</li>
+
+
+      </ul>
+    </div>
+  
+  
+  <header>
+    <h1>A–Z Digital Marketing</h1>
+    <p>All major digital marketing strategies explained in one place.</p>
+    <P>Good digital marketing can make or break any business. 
+      Let this list of marketing agency services help you decide what to outsource to keep your business moving forward.</P>
+  </header>
+
+
+  
+
+<br><br><br>
+     <!-- Moving marquee -->
+     <div class="marque-container">
+      <div class="marque">
+        <span>Email Campaigns</span>
+        <span>Social Media</span>
+        <span>PPC</span>
+        <span>Influencer Marketing</span>
+        <span>Analytics</span>
+        <span>Branding</span>
+        <span>Mobile Marketing</span>
+        <span>Video Marketing</span>
+        <span>Affiliate Marketing</span>
+      </div>
+    </div><br>
+    <section class="digital-marketing">
+      <!-- Why Choose Us -->
+      <div class="dm-container">
+        <h2>Why Choose Us</h2>
+        <p>We don’t just run campaigns, we build strategies that deliver measurable growth.</p>
+        <ul>
+          <li><span class="tick">✔</span> 10+ Years of Industry Experience</li>
+          <li><span class="tick">✔</span> ROI-Focused Digital Marketing</li>
+          <li><span class="tick">✔</span> Dedicated Account Managers</li>
+          <li><span class="tick">✔</span> Data-Driven Decision Making</li>
+          <li><span class="tick">✔</span> Transparent Monthly Reporting</li>
+          <li><span class="tick">✔</span> 24/7 Support & Consultation</li>
+        </ul>
+      </div>
+    
+      <!-- Our Services -->
+      <div class="dm-container">
+        <h2>Our Services</h2>
+        <p>From awareness to conversion, we cover the entire digital journey for your brand.</p>
+        <ul>
+          <li><span class="tick">✔</span> Search Engine Optimization (SEO)</li>
+          <li><span class="tick">✔</span> Offline Marketing</li>
+          <li><span class="tick">✔</span> Pay-Per-Click (PPC) & Google Ads</li>
+          <li><span class="tick">✔</span> Social Media Marketing (Facebook, Instagram,YouTube LinkedIn)</li>
+          <li><span class="tick">✔</span> Content & Video Marketing</li>
+          <li><span class="tick">✔</span> Email & Mobile Marketing</li>
+          <li><span class="tick">✔</span> Influencer & Affiliate Marketing</li>
+          <li><span class="tick">✔</span> Branding & Creative Ad Campaigns</li>
+          <li><span class="tick">✔</span> Analytics & Conversion Optimization</li>
+        </ul>
+      </div>
+    
+      <!-- Our Promise -->
+      <div class="dm-container">
+        <h2>Our Promise to Clients</h2>
+        <p>We aim to be more than an agency — we want to be your long-term growth partner.</p>
+        <ul>
+          <li><span class="tick">✔</span> Deliver measurable growth & ROI</li>
+          <li><span class="tick">✔</span> Increase your online visibility</li>
+          <li><span class="tick">✔</span> Build a stronger and trusted brand identity</li>
+          <li><span class="tick">✔</span> Generate quality leads that convert</li>
+          <li><span class="tick">✔</span> Provide consistent communication & support</li>
+          <li><span class="tick">✔</span> Stay ahead with the latest marketing trends</li>
+        </ul>
+      </div>
+    </section>
+    <section class="process-section">
+      <div class="process-left">
+        <h2>THESE ARE THE PROCESSES WE FOLLOW TO GROW YOUR BUSINESS</h2><br><br>
+    
+        <div class="process-grid">
+          <div class="process-step">
+            <div class="circle">01</div>
+            <div class="process-text">
+              <h3>Analyzing</h3>
+              <p>We carefully analyze your site to meet your business goals.</p>
+            </div>
+          </div>
+    
+          <div class="process-step">
+            <div class="circle">02</div>
+            <div class="process-text">
+              <h3>Planning</h3>
+              <p>We plan and implement strategies to boost your brand growth.</p>
+            </div>
+          </div>
+    
+          <div class="process-step">
+            <div class="circle">03</div>
+            <div class="process-text">
+              <h3>Execution</h3>
+              <p>We run successful digital marketing campaigns and SEO that drive customers.</p>
+            </div>
+          </div>
+    
+          <div class="process-step">
+            <div class="circle">04</div>
+            <div class="process-text">
+              <h3>Tracking & Reporting</h3>
+              <p>We collect campaign data, measure progress, suggest changes, and send full reports.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="process-right">
+        <div class="circle-logo">
+          <img id="logo" src="img1.png" alt="Company Logo">
+        </div>
+      </div>
+    </section>
+    <div class="service-section">
+      <img src="https://i.pinimg.com/originals/c4/80/eb/c480eb10eed73ebeb24c33a1b8a5bc03.png" alt="Social Media Marketing">
+      <div class="service-text">
+        <h2>SMM (Social Media Marketing)</h2>
+        <p>We help your brand build a strong presence on Facebook, Instagram, LinkedIn, and YouTube with engaging content, creative campaigns, and targeted ads.</p>
+        <p><b>Why it matters:</b> Social media drives brand awareness, increases trust, and connects you directly with potential customers.</p>
+        <p><b>Result:</b> More followers, higher engagement, and increased sales leads.</p>
+      </div>
+    </div>
+    
+    <div class="service-section">
+      <img src="https://alreadysetup.com/wp-content/uploads/SEO-image1.jpg" alt="SEO">
+      <div class="service-text">
+        <h2>SEO (Search Engine Optimization)</h2>
+        <p>We optimize your website to rank higher on Google so customers can find you easily when they search for your services.</p>
+        <p><b>Why it matters:</b> Over 70% of clicks go to the first page of search results.</p>
+        <p><b>Result:</b> Long-term traffic growth, increased brand trust, and steady conversions.</p>
+      </div>
+    </div>
+    
+    <div class="service-section">
+      <img src="https://www.marketing91.com/wp-content/uploads/2019/04/What-is-Offline-Marketing-1.jpg" alt="Offline Marketing">
+      <div class="service-text">
+        <h2>Offline Marketing</h2>
+        <p>Offline marketing focuses on traditional promotional methods such as banners, print ads, brochures, events, and direct campaigns. Unlike digital platforms, it creates a strong physical presence and builds trust through tangible brand experiences.</p>
+        <p><b>Why it matters:</b> Not all audiences are online. Offline marketing ensures your brand connects with local communities, reaches wider demographics, and builds credibility through face-to-face visibility.</p>
+        <p><b>Result:</b> Increased brand recognition, stronger local engagement, and long-term customer loyalty that complements your digital marketing efforts.</p>
+      </div>
+    </div>
+    
+    
+    <div class="service-section">
+      <img src="https://fireforeffectffe.com/wp-content/uploads/2024/02/ppc.jpg" alt="PPC">
+      <div class="service-text">
+        <h2>PPC (Pay-Per-Click Advertising)</h2>
+        <p>We design targeted Google Ads & social media campaigns to get instant traffic and measurable results.</p>
+        <p><b>Why it matters:</b> You only pay when someone clicks, making it cost-effective.</p>
+        <p><b>Result:</b> Faster visibility, higher conversions, and immediate ROI.</p>
+      </div>
+    </div>
+    
+    <div class="service-section">
+      <img src="https://www.eminenturetech.com/images/em-maininfographics/EMAIL-marketing.png" alt="Email Marketing">
+      <div class="service-text">
+        <h2>Email Marketing</h2>
+        <p>Our personalized email campaigns keep your customers informed, engaged, and loyal to your brand.</p>
+        <p><b>Why it matters:</b> Email delivers one of the highest returns on investment in digital marketing.</p>
+        <p><b>Result:</b> Better customer retention and repeat sales.</p>
+      </div>
+    </div>
+    
+    <div class="service-section">
+      <img src="https://th.bing.com/th/id/OIP.FOoDWzR1zdK-wcL82GtFfwHaE2?w=287&h=191&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Content & Video Marketing">
+      <div class="service-text">
+        <h2>Content & Video Marketing</h2>
+        <p>We produce creative promotional and explainer videos that capture attention and increase engagement.</p>
+        <p><b>Why it matters:</b> Videos are shared 1200% more than text and images combined.</p>
+        <p><b>Result:</b> Strong storytelling, higher reach, and improved conversions.</p>
+      </div>
+    </div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const steps = document.querySelectorAll(".process-step");
+  const logo = document.querySelector(".circle-logo");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          let delay = 400;
+          steps.forEach((step, index) => {
+            setTimeout(() => {
+              step.classList.add("visible");
+            }, delay * (index + 1));
+          });
+
+          setTimeout(() => {
+            logo.classList.add("visible");
+          }, delay * (steps.length + 1));
+
+          // Run animation only once
+          observer.disconnect();
+        }
+      });
+    },
+    { threshold: 0.2 } // section triggers when 20% is visible
+  );
+
+  observer.observe(document.querySelector(".process-section"));
+
+  // Rotate back after hover
+  const logoImg = document.getElementById("logo");
+  logoImg.addEventListener("transitionend", () => {
+    if (!logoImg.closest(".circle-logo:hover")) {
+      logoImg.classList.add("rotated-back");
+      setTimeout(() => logoImg.classList.remove("rotated-back"), 1000);
+    }
+  });
+});
+
+
+  function sendWhatsApp(plan) {
+    let confirmSend = confirm(`Do you want to send this plan to Admin?\n\n${plan}`);
+    if (confirmSend) {
+      let adminNumber = "916369327027"; 
+      let message = 
+  `Hello Admin, 
+I am interested in the following plan:
+  \n${plan}`;
+      let url = `https://wa.me/${adminNumber}?text=${encodeURIComponent(message)}`;
+      window.open(url, "_blank");
+    }
+  }
+</script>
+</body>
+</html>

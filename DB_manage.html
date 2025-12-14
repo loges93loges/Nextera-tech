@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Marketing Section</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #eee;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: #00c8ff;
+      margin: 20px 0;
+    }
+
+    /* Stats Counter */
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin: 20px 0;
+    }
+
+    .stat {
+      background: #1c1c1c;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 200, 255, 0.5);
+      width: 150px;
+    }
+
+    .stat h3 {
+      font-size: 2rem;
+      color: #00ffae;
+      margin: 0;
+    }
+
+    /* Tools Marquee */
+    .tools-container {
+      width: 100%;
+      overflow: hidden;
+      margin: 30px auto;
+      position: relative;
+    }
+
+    .tools-slider {
+      display: flex;
+      gap: 50px;
+      animation: scroll 25s linear infinite;
+      width: max-content;
+    }
+
+    .tools-slider img {
+      height: 60px;
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .tools-slider img:hover {
+      transform: scale(1.2);
+    }
+
+    @keyframes scroll {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* Tool Info Box */
+    .tool-info {
+      margin-top: 20px;
+      background: #1c1c1c;
+      padding: 15px;
+      border-radius: 10px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      display: none;
+      box-shadow: 0 0 12px rgba(0, 200, 255, 0.5);
+    }
+
+    /* Lead Form */
+    .lead-form {
+      background: #1c1c1c;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 400px;
+      margin: 40px auto;
+      box-shadow: 0 0 12px rgba(0, 200, 255, 0.5);
+    }
+
+    .lead-form input, .lead-form button {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+    }
+
+    .lead-form input {
+      background: #333;
+      color: #fff;
+    }
+
+    .lead-form button {
+      background: #00c8ff;
+      color: #111;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .lead-form button:hover {
+      background: #00ffae;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🚀 Digital Marketing That Delivers</h2>
+
+  <!-- Stats Counter -->
+  <div class="stats">
+    <div class="stat">
+      <h3 id="stat1">0</h3>
+      <p>Campaigns Managed</p>
+    </div>
+    <div class="stat">
+      <h3 id="stat2">0</h3>
+      <p>Leads Generated</p>
+    </div>
+    <div class="stat">
+      <h3 id="stat3">0</h3>
+      <p>Average ROI</p>
+    </div>
+  </div>
+
+  <!-- Tools Marquee -->
+  <h2>🛠 Tools We Use</h2>
+  <div class="tools-container">
+    <div class="tools-slider">
+      <img src="https://img.icons8.com/color/96/google-ads.png" alt="Google Ads" data-info="Google Ads helps us run targeted ad campaigns for maximum reach and conversions.">
+      <img src="https://img.icons8.com/color/96/facebook.png" alt="Meta Ads" data-info="Meta Ads allow us to engage audiences on Facebook and Instagram effectively.">
+      <img src="https://img.icons8.com/color/96/semrush.png" alt="SEMrush" data-info="SEMrush is used for SEO optimization, keyword research, and competitor analysis.">
+      <img src="https://img.icons8.com/color/96/hubspot.png" alt="HubSpot" data-info="HubSpot helps us automate marketing workflows and manage CRM.">
+      <img src="https://img.icons8.com/color/96/mailchimp.png" alt="Mailchimp" data-info="Mailchimp is used for email marketing campaigns with personalized outreach.">
+      <img src="https://img.icons8.com/color/96/linkedin.png" alt="LinkedIn Ads" data-info="LinkedIn Ads help target B2B professionals for high-quality leads.">
+    </div>
+  </div>
+
+  <div id="tool-info" class="tool-info"></div>
+
+  <!-- Lead Capture Form -->
+  <h2>📩 Get Your Free Marketing Audit</h2>
+  <div class="lead-form">
+    <input type="text" placeholder="Your Name">
+    <input type="email" placeholder="Your Email">
+    <input type="text" placeholder="Your Website">
+    <button>Submit</button>
+  </div>
+
+  <script>
+    // Stats Counter
+    function animateValue(id, start, end, duration) {
+      let obj = document.getElementById(id);
+      let range = end - start;
+      let startTime = null;
+
+      function step(timestamp) {
+        if (!startTime) startTime = timestamp;
+        let progress = Math.min((timestamp - startTime) / duration, 1);
+        obj.innerText = Math.floor(progress * range + start);
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        }
+      }
+      requestAnimationFrame(step);
+    }
+
+    animateValue("stat1", 0, 250, 2000);
+    animateValue("stat2", 0, 10000, 2500);
+    animateValue("stat3", 0, 300, 2000);
+
+    // Tool Click Info
+    const toolImages = document.querySelectorAll(".tools-slider img");
+    const toolInfo = document.getElementById("tool-info");
+
+    toolImages.forEach(img => {
+      img.addEventListener("click", () => {
+        toolInfo.style.display = "block";
+        toolInfo.innerHTML = `<strong>${img.alt}</strong><br>${img.dataset.info}`;
+      });
+    });
+  </script>
+
+</body>
+</html>
