@@ -4,19 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NextEra TECH</title>
-  <link rel="icon" href="img1.png" sizes="52x52">
+  <link rel="icon" href="images/img1.png" sizes="52x52">
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
- 
+
   <div class="cursor"></div>
   <nav class="nav">
     <a class="brand" href="#">
-      <div class="brand-icon"><img src="img1.png"></div>
+      <div class="brand-icon"><img src="images/img1.png"></div>
       <span id="brandText"></span>
     </a>
     <div class="bran">Innovating the future</div>
@@ -28,30 +29,63 @@
   </div>
   
   <ul class="nav-links">
-    <li><a href="#home" class="home"><i class="fas fa-home"></i> Home</a></li>
+    <li><a href="#hero" class="home"><i class="fas fa-home"></i> Home</a></li>
     <li><a href="#about" class="about"><i class="fas fa-user"></i> About</a></li>
     <li><a href="#services" class="projects"><i class="fas fa-briefcase"></i> Services</a></li>
     <li><a href="#" class="contact"><i class="fas fa-envelope"></i> Contact</a></li>
     <li><a href="#" class="footer"><i class="fas fa-info-circle"></i> Footer</a></li>
   </ul></nav>
   
-  <!-- Hero Section with Video -->
-  <section id="home" class="hero">
-     
-      
-      <div class="bot">
-    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.53/build/spline-viewer.js"></script>
-    <spline-viewer url="https://prod.spline.design/QMVZ9-mmLOdkLgTR/scene.splinecode"></spline-viewer>
-  </div>
 
-    <div class="hero-content">
-      <h1>Welcome to Synsyfer</h1>
-      <p>Innovating the future with style 🚀</p>
+
+    
+  <section class="company-hero" id="hero">
+    <div class="hero-container">
+      <div class="hero-text">
+        <h1>
+          Building <span>Smart Digital Solutions</span><br />
+          for Modern Businesses
+        </h1>
+  
+        <p>
+          At <strong>NextEra TEC</strong>, we transform ideas into scalable,
+          secure, and innovative digital products that drive real growth.
+        </p>
+  
+        <div class="hero-buttons">
+          <a href="#projects" class="btn primary">View Our Work</a>
+          <a href="#contact" class="btn secondary">Book Free Consultation</a>
+        </div>
+      </div>
+  
+      <!-- RIGHT IMAGE -->
+    
+  
     </div>
   </section>
+  <!-- Bottom arrow -->
+  <div class="preview" id="bottomBar">
+    <span>⮝ View More</span>
+  </div>
+
+  <!-- Page container with iframe -->
+  <div id="pageContainer">
+    <iframe src="ind.html" frameborder="0" style="width:100%;height:100%"></iframe>
+  </div>
+
+  <!-- Top arrow -->
+  <div id="topArrow">
+    <span>⮟ Back</span>
+  </div>
+
+  
+
   <section id="about" class="about-section">     
     <h2>ABOUT US</h2><br>
-    <p>We aim to deliver bold,and performance.product Software requirements reliable Our solutions empower businesses to grow with technologyWe aim to deliver bold, modern web experiences that combine creativity and performance. Our solutions empower businesses to grow with technologyWe aim to deliver bold, modern web experiences that combine creativity and performance. Our solutions empower businesses to grow with technology</p>
+    <p>We aim to deliver bold,and performance.product Software requirements reliable Our solutions empower businesses to grow with technology 
+      We aim to deliver bold, modern web experiences that combine creativity and performance. 
+      Our solutions empower businesses to grow with technology We aim to deliver bold, 
+      modern web experiences that combine creativity and performance. Our solutions empower businesses to grow with technology</p>
    <br><br><br><br>
     <div class="about-container">
 
@@ -59,15 +93,11 @@
       <div class="about-content">
         <h2>Our Vision</h2>
         <p>
-          Ninos it Solution is an Established Software Development Company in Pollachi.
-          We provide OffShore Projects Develop developers always worming a reliable & adequate software development product
-          to our valuable clients.
+          To be a future-ready technology partner that empowers businesses and individuals to innovate, grow, and succeed in the digital era.
         </p><br>
         <h2>Our Mission</h2>
         <p>
-          We thoroughly analyse your product requirements and produce crystallised software
-          solutions which enhances your business groare to our customers
-          that helps them to attain the maximum outcome & ROI.
+          To deliver innovative, reliable, and scalable digital solutions that solve real-world problems
         </p>
       </div>
   
@@ -373,6 +403,50 @@ padding: 20px 0; text-align: center; color: rgb(0, 0, 0); margin-top: 30px;">
 
  
    </footer>
+ 
+   <script>
+    const bar = document.getElementById("bottomBar");
+    const topArrow = document.getElementById("topArrow");
+    const hero = document.getElementById("hero");
+    const pageContainer = document.getElementById("pageContainer");
+    const EDGE = 80;
+    let pageOpen = false;
+
+    window.addEventListener("mousemove", e => {
+      if (!pageOpen) {
+        bar.classList.toggle("show", e.clientY > window.innerHeight - EDGE);
+        topArrow.classList.remove("show"); // top arrow hidden while hero visible
+      } else {
+        // Only show top arrow when mouse near top
+        topArrow.classList.toggle("show", e.clientY < EDGE);
+      }
+    });
+
+    // Animate hero up and show iframe page
+    bar.onclick = () => {
+      hero.style.transition = "transform 0.9s ease";
+      hero.style.transform = "translateY(-100%)";
+
+      pageContainer.style.top = "0";
+      pageOpen = true;
+
+      bar.classList.remove("show");  // Hide bottom arrow permanently
+    };
+
+    // Animate back to hero
+    topArrow.onclick = () => {
+      pageContainer.style.top = "100%";
+      hero.style.transform = "translateY(0)";
+      pageOpen = false;
+
+      topArrow.classList.remove("show"); // hide top arrow
+    };
+  </script>
+
+    
+    
+    
 </body>
+
 <script src="script.js"></script>
 </html>
